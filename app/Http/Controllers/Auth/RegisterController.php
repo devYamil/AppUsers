@@ -62,7 +62,7 @@ class RegisterController extends Controller
                     if($buscarNumeros == 0){
                         $fail('Password, You must enter at least one number');
                     }
-                    // VALIDAR QUE TENGA AL MENOS UNA MAYUSCULA
+                    // VALIDAR QUE EL PASSWORD TENGA AL MENOS UNA MAYUSCULA
                     $cantidadMayusculas = strlen(preg_replace('![^A-Z]+!', '', $value));
                     if($cantidadMayusculas == 0){
                         $fail('Password, You must enter at least one capital letter');
