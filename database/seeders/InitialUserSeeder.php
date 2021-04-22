@@ -16,7 +16,7 @@ class InitialUserSeeder extends Seeder
     {
         // CREAR USUARIO INICIAL PARA EL SISTEMA APP USERS
         \DB::table('users')->insert(array (
-                0 => array ( 'name' => 'Yamil Roger Alejo Perez', 'email' => 'knt_277@hotmail.es', 'password' => Hash::make('gus[][]@G123'), 'phone_number' => 4444, 'identity_card' => 8580227, 'date_birth' => '1989-04-27', 'city' => 'Bolivia'),
+                0 => array ( 'name' => 'Yamil Roger Alejo Perez', 'email' => 'knt_277@hotmail.es', 'password' => Hash::make('gus[][]@G123'), 'phone_number' => 4444, 'identity_card' => 8580227, 'date_birth' => '1989-04-27', 'city' => 'Llallagua'),
             )
         );
     }

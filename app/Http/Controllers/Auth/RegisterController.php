@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\City;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use DateTime;
@@ -93,6 +94,7 @@ class RegisterController extends Controller
                         $fail('Date birth, You must be over 18 years old');
                     }
                 }],
+            'city' => ['required', 'string'],
         ]);
     }
 
@@ -104,10 +106,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $city = City::where('id', '=', $data['city'])->first();
         return User::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'name' => $data['name'],
+            'phone_number' => $data['phone_number'],
+            'identity_card' => $data['identity_card'],
+            'date_birth' => $data['date_birth'],
+            'city' => $city->name_city,
         ]);
     }
 }

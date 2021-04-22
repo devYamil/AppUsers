@@ -188,7 +188,61 @@
             });
 
             $('#country').on('change', function() {
-                alert( this.value );
+
+                $("#state").html('');
+
+                $("#state").append('<option value="">-Select a State-</option>');
+
+                var parametrosState = {
+                    _token : token,
+                    id_country : this.value,
+                }
+
+                $.ajax({
+                    data:  parametrosState,
+                    url:   'get-states-data',
+                    type:  'GET',
+                    dataType: "json",
+                    success: function(result) {
+                        $.each(result.states, function(index, value) {
+                            $("#state").append('<option value="'+value.id+'">'+value.name_state+'</option>');
+                        });
+                    },
+                    error: function(xhr) { // if error occured
+                        console.log("Error occured.please try again", xhr);
+                    },
+                    complete: function (result) {
+                        console.log("complete");
+                    }
+                });
+            });
+            $('#state').on('change', function() {
+                $("#city").html('');
+
+                $("#city").append('<option value="">-Select a State-</option>');
+
+                var parametrosCities = {
+                    _token : token,
+                    id_state : this.value,
+                }
+
+                $.ajax({
+                    data:  parametrosCities,
+                    url:   'get-cities-data',
+                    type:  'GET',
+                    dataType: "json",
+                    success: function(result) {
+                        $.each(result.cities, function(index, value) {
+                            $("#city").append('<option value="'+value.id+'">'+value.name_city+'</option>');
+                        });
+                    },
+                    error: function(xhr) { // if error occured
+                        console.log("Error occured.please try again", xhr);
+                    },
+                    complete: function (result) {
+                        console.log("complete");
+                    }
+                });
             });
         });
     </script>

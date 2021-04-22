@@ -24,3 +24,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // ROUTE FOR COUNTRIES
 Route::get('get-countries-data', [App\Http\Controllers\CountriesController::class, 'getCountriesData']);
+// ROUTE FOR STATES
+Route::get('get-states-data', [App\Http\Controllers\StatesController::class, 'getStatesData']);
+// ROUTE FOR CITIES
+Route::get('get-cities-data', [App\Http\Controllers\CitiesController::class, 'getCitiesData']);
