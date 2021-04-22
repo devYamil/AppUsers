@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<input type="hidden" id="token-for-ajax" value="{{csrf_token()}}">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -105,11 +106,31 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="date_birth" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
+                            <label for="date_birth" class="col-md-4 col-form-label text-md-right">{{ __('Country : ') }}</label>
+
+                            <div class="col-md-6">
+                                <select class="selectpicker" name="country" id="country">
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="date_birth" class="col-md-4 col-form-label text-md-right">{{ __('State : ') }}</label>
+
+                            <div class="col-md-6">
+                                <select class="selectpicker" name="state" id="state">
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="date_birth" class="col-md-4 col-form-label text-md-right">{{ __('City : ') }}</label>
 
                             <div class="col-md-6">
                                 <select class="selectpicker" name="city" id="city">
-                                    <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
+
                                 </select>
 
                                 @error('city')
@@ -133,4 +154,42 @@
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+    <script>
+        $(document).ready(function(){
+            console.log('Esta ingresando ***************************************');
+            var token = $('#token-for-ajax').val();
+
+            var parametros = {
+                _token : token,
+            }
+
+            $("#country").html('');
+
+            $("#country").append('<option value="">-Select a Country-</option>');
+
+            $.ajax({
+                data:  parametros,
+                url:   'get-countries-data',
+                type:  'GET',
+                dataType: "json",
+                success: function(result) {
+                    $.each(result.countries, function(index, value) {
+                        $("#country").append('<option value="'+value.id+'">'+value.name_country+'</option>');
+                    });
+                },
+                error: function(xhr) { // if error occured
+                    console.log("Error occured.please try again", xhr);
+                },
+                complete: function (result) {
+                    console.log("complete");
+                }
+            });
+
+            $('#country').on('change', function() {
+                alert( this.value );
+            });
+        });
+    </script>
 @endsection
