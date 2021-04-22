@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use DateTime;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -77,6 +78,21 @@ class RegisterController extends Controller
 
                 }],
             'name' => ['required', 'string', 'max:100'],
+            'phone_number' => ['max:10'],
+            'identity_card' => ['required', 'string', 'max:11'],
+            'date_birth' => ['required',
+                // VALIDAR QUE SEA MAYOR A 18 ANIOS
+                function ($attribute, $value, $fail) {
+                    $date1 = new DateTime($value);
+                    $date2 = new DateTime();
+                    $diff = $date1->diff($date2);
+
+                    $anios = (int)$diff->y;
+
+                    if($anios < 18){
+                        $fail('Date birth, You must be over 18 years old');
+                    }
+                }],
         ]);
     }
 
