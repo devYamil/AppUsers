@@ -28,3 +28,6 @@ Route::get('get-countries-data', [App\Http\Controllers\CountriesController::clas
 Route::get('get-states-data', [App\Http\Controllers\StatesController::class, 'getStatesData']);
 // ROUTE FOR CITIES
 Route::get('get-cities-data', [App\Http\Controllers\CitiesController::class, 'getCitiesData']);
+
+// ROUTE FOR USER
+Route::get('user-list', [App\Http\Controllers\UsersController::class, 'getUsers']);

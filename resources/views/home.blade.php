@@ -14,7 +14,10 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                        <p>{{ 'Bienvenido : '.Auth::user()->name }}</p>
+                        <p>{{ 'Email : '.Auth::user()->email }} </p>
+                        <p>{{ 'Phone Number : '.Auth::user()->phone_number }} <p/>
+                        <p>{{ 'City : '.Auth::user()->city }} <p/>
                 </div>
             </div>
         </div>
