@@ -13,9 +13,12 @@ class CreateTableCities extends Migration
      */
     public function up()
     {
-        Schema::create('table_cities', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('cities', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->increments('id');
+            $table->integer('id_state')->unsigned()->comment('Identificador de los states');
+            $table->string('name_city', 190);
+            $table->foreign('id_state')->references('id')->on('states');
         });
     }
 
@@ -26,6 +29,6 @@ class CreateTableCities extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_cities');
+        Schema::dropIfExists('cities');
     }
 }

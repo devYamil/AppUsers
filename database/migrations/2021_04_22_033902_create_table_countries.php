@@ -13,9 +13,11 @@ class CreateTableCountries extends Migration
      */
     public function up()
     {
-        Schema::create('table_countries', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('countries', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->increments('id');
+            $table->string('name_country', 190);
+            $table->index('name_country');
         });
     }
 
@@ -26,6 +28,6 @@ class CreateTableCountries extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_countries');
+        Schema::dropIfExists('countries');
     }
 }

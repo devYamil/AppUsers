@@ -13,9 +13,12 @@ class CreateTableStates extends Migration
      */
     public function up()
     {
-        Schema::create('table_states', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('states', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->increments('id');
+            $table->integer('id_country')->unsigned()->comment('Identificador de los countries');
+            $table->string('name_state', 190);
+            $table->foreign('id_country')->references('id')->on('countries');
         });
     }
 
@@ -26,6 +29,6 @@ class CreateTableStates extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_states');
+        Schema::dropIfExists('states');
     }
 }
