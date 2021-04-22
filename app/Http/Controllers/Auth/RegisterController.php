@@ -67,6 +67,14 @@ class RegisterController extends Controller
                     if($cantidadMayusculas == 0){
                         $fail('Password, You must enter at least one capital letter');
                     }
+
+                    // OTRA FORMA DE VALIDAR TODO EN UNO CON EXPRESIONES RGULARES $pattern = "/ ^ (? =.[a-z]) (? =.[A-Z]) (? =.d) (? =.[^ A-Za-zd]) [sS] {6,16} $ / ";
+                    $validarCaracteresEspeciales = preg_match('/[^a-zA-Z\d]/', $value);
+
+                    if($validarCaracteresEspeciales == 0){
+                        $fail('Password, You must enter at least one special character');
+                    }
+
                 }],
             'name' => ['required', 'string', 'max:100'],
         ]);
