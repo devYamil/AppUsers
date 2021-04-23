@@ -34,3 +34,9 @@ Route::get('user-list', [App\Http\Controllers\UsersController::class, 'getUsers'
 Route::get('user-edit/{id}', [App\Http\Controllers\UsersController::class, 'editUser']);
 Route::post('user-update', [App\Http\Controllers\UsersController::class, 'updateUser']);
 Route::get('user-delete/{id}', [App\Http\Controllers\UsersController::class, 'deleteUser']);
+
+
+// ROUTE EMAIL
+Route::get('create-email', [App\Http\Controllers\EmailsController::class, 'createEmail']);
+Route::get('list-emails', [App\Http\Controllers\EmailsController::class, 'listEmails']);
+Route::post('register-emails', [App\Http\Controllers\EmailsController::class, 'registerEmails']);
