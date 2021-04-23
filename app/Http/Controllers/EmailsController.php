@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Email;
 use App\Models\User;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -29,6 +30,7 @@ class EmailsController extends Controller
     }
 
     public function registerEmails(Request $request){
+        $date2 = new DateTime();
         Email::create([
             'id_user' => Auth::user()->id,
             'subject' => $request->get('subject'),

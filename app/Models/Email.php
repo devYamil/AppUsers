@@ -20,8 +20,10 @@ class Email extends Model
         'destination',
         'message',
         'status_send_email',
+        'created_at',
+        'updated_at',
     ];
 
-    public $timestamps = false;
+    public $timestamps = true;
 
 }

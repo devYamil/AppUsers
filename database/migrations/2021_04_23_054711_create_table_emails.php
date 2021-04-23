@@ -22,6 +22,7 @@ class CreateTableEmails extends Migration
             $table->string('destination', 190);
             $table->string('message', 190);
             $table->string('status_send_email', 2);
+            $table->timestamps();
         });
     }
 

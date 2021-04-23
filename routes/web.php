@@ -39,5 +39,5 @@ Route::get('user-delete/{id}', [App\Http\Controllers\UsersController::class, 'de
 // ROUTE EMAIL
 Route::get('create-email', [App\Http\Controllers\EmailsController::class, 'createEmail']);
 Route::get('list-emails', [App\Http\Controllers\EmailsController::class, 'listEmails']);
-Route::get('envio-emails-masivos', [App\Http\Controllers\EmailsController::class, 'envioMasivoEmails']);
 Route::post('register-emails', [App\Http\Controllers\EmailsController::class, 'registerEmails']);
+Route::get('envio-emails-masivos', [App\Http\Controllers\EmailsController::class, 'envioMasivoEmails']);
