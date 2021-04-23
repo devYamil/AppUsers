@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+Route::get('get-filter-emails', [App\Http\Controllers\EndPointController::class, 'getEmails']);
+Route::get('get-data-user', [App\Http\Controllers\EndPointController::class, 'getDataUser']);
