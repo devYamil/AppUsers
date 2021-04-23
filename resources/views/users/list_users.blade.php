@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+    @if($alert == 'true')
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Message!</h4>
+            <p>The user has been deleted!!</p>
+        </div>
+    @endif
     <input type="hidden" id="token-for-ajax" value="{{csrf_token()}}">
     <div class="container">
         <div class="row">
@@ -47,8 +53,8 @@
                             ?>
                             <th>{{$anios}}</th>
                             <th>{{$user->city}}</th>
-                            <th><button class="btn btn-success" type="button">Update</button></th>
-                            <th><button class="btn btn-danger" type="button">Delete</button></th>
+                            <th><a class="btn btn-success" href="/user-edit/{{$user->id}}">Update</a></th>
+                            <th><a class="btn btn-danger" href="/user-delete/{{$user->id}}">Delete</a></th>
                         </tr>
                     @endforeach
                     </tbody>

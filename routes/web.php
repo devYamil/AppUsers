@@ -31,3 +31,6 @@ Route::get('get-cities-data', [App\Http\Controllers\CitiesController::class, 'ge
 
 // ROUTE FOR USER
 Route::get('user-list', [App\Http\Controllers\UsersController::class, 'getUsers']);
+Route::get('user-edit/{id}', [App\Http\Controllers\UsersController::class, 'editUser']);
+Route::post('user-update', [App\Http\Controllers\UsersController::class, 'updateUser']);
+Route::get('user-delete/{id}', [App\Http\Controllers\UsersController::class, 'deleteUser']);

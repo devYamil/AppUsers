@@ -106,7 +106,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="date_birth" class="col-md-4 col-form-label text-md-right">{{ __('Country : ') }}</label>
+                            <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country : ') }}</label>
 
                             <div class="col-md-6">
                                 <select class="selectpicker" name="country" id="country">
@@ -116,7 +116,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="date_birth" class="col-md-4 col-form-label text-md-right">{{ __('State : ') }}</label>
+                            <label for="state" class="col-md-4 col-form-label text-md-right">{{ __('State : ') }}</label>
 
                             <div class="col-md-6">
                                 <select class="selectpicker" name="state" id="state">
@@ -126,7 +126,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="date_birth" class="col-md-4 col-form-label text-md-right">{{ __('City : ') }}</label>
+                            <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City : ') }}</label>
 
                             <div class="col-md-6">
                                 <select class="selectpicker" name="city" id="city">
