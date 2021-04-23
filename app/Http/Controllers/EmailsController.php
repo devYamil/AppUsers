@@ -6,6 +6,7 @@ use App\Models\Email;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class EmailsController extends Controller
 {
@@ -45,5 +46,27 @@ class EmailsController extends Controller
         $emails = Email::all();
 
         return view('emails/list_emails', ['emails' => $emails]);
+    }
+
+    public function envioMasivoEmails(){
+        $emails = Email::where('status_send_email', '=', '0');
+
+
+        foreach($emails as $email){
+            $subject = $email->subject;
+            $destination = $email->destination;
+            $messageBody = $email->message;
+            $data = array('name'=>"Yamil App Test");
+            // ENVIAMOS CORREO
+            Mail::send(['text'=>$messageBody], $data, function($message, $subject, $destination) {
+                $message->to('appUsersRemitent@gmail.com', 'App Users')->subject($subject);
+                $message->from($destination,'App Users');
+            });
+            // ACTUALIZAMOS ESTADO ENVIO
+            $arrayData = array('status_send_email' => '1');
+            User::where('id', $email->id)->update($arrayData);
+        }
+
+
     }
 }
